@@ -50,15 +50,13 @@ router.post('/products', (req, res) => {
     // product collection에 들어 있는 모든 상품 정보를 가져오기
 
     let limit = req.body.limit ? parseInt(req.body.limit) : 100;
-    let skip = req.body. any ? parseInt(req.body.skip) : 0;
+    let skip = req.body.skip ? parseInt(req.body.skip) : 0;
 
     let findArgs = {};
     let term = req.body.searchTerm;
 
     for(let key in req.body.filters) {
       if(req.body.filters[key].length > 0){
-
-          console.log('key', key)
 
           if(key === "price"){
             findArgs[key] = {
@@ -114,19 +112,21 @@ router.get('/products_by_id', (req, res) => {
   if(type === "array") {
     // id = 12312312412,123124213123,143512321 이거를
     // productIds = [ '12312312412' , '123124213123', '143512321'] 이런식으로 바꿔주기
-    let ids = req.query.id.split(',')
+    let ids = req.query.id.split(',');
+    productIds = [];
     productIds = ids.map(item => {
       return item
     })
   }
+  console.log("productIds", productIds)
 
-  Product.find({ _id: {$in: productIds} })
+  Product.find({ _id: { $in: productIds } })
     .populate('writer')
     .exec((err, product) => {
       if (err) return res.status(400).send(err)
-      return res.status(200).json({success: true, product})
+      return res.status(200).send(product)
     })
-})
+});
 
 
 

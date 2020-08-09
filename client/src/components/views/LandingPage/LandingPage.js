@@ -59,7 +59,9 @@ function LandingPage() {
 		let body = {
 			skip: skip,
 			limit: Limit,
-			loadMore: true
+			loadMore: true,
+			filters: Filters,
+			searchTerm: SearchTerm
 		}
 
 		getProducts(body)
@@ -154,12 +156,12 @@ function LandingPage() {
 						handleFilters={filters => handleFilters(filters, "continents")}
 					/>
     			</Col>
-                <Col lg={12} xs={24}>
-                    <RadioBox
-                        list={price}
-                        handleFilters={filters => handleFilters(filters, "price")}
-                    />
-                </Col>
+					<Col lg={12} xs={24}>
+							<RadioBox
+									list={price}
+									handleFilters={filters => handleFilters(filters, "price")}
+							/>
+					</Col>
     		</Row>
 
 
@@ -171,17 +173,17 @@ function LandingPage() {
 				</div>
     		{/* Cards  */}
 
-			<Row gutter={[16, 16]}>
-    		{renderCards}
-			</Row>
+				<Row gutter={[16, 16]}>
+					{renderCards}
+				</Row>
 
-			<br />
+				<br />
 
-            {PostSize >= Limit &&
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <button onClick={loadMoreHandler}>더보기</button>
-                </div>
-            }
+				{PostSize >= Limit &&
+						<div style={{ display: 'flex', justifyContent: 'center' }}>
+								<button onClick={loadMoreHandler}>더보기</button>
+						</div>
+				}
 
     	</div>
     )

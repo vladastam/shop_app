@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import ProductImage from './Sections/ProductImage';
 import ProductInfo from './Sections/ProductInfo';
+import { addToCart } from '../../../_actions/user_actions';
 import { Row, Col } from 'antd';
+import { useDispatch } from 'react-redux';
 
 function DetailProductPage(props) {
-
+  const dispatch = useDispatch();
   const productId = props.match.params.productId
 
   const [Product, setProduct] = useState({})
@@ -14,15 +16,12 @@ function DetailProductPage(props) {
 
       axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
         .then(response => {
-          if(response.data.success) {
-            console.log('response',response.data)
-            setProduct(response.data.product[0])
-          } else {
-            alert ('상세 정보 가져오기를 실패했습니다.')
-          }
+            console.log('response.data', response.data)
+            setProduct(response.data[0])
         })
-
+        .catch(err => alert(err))
   }, [])
+
 
 
   return (
@@ -38,7 +37,8 @@ function DetailProductPage(props) {
       </Col>
       <Col lg={12} sm={24}>
         {/* ProductInfo */}
-        <ProductInfo detail={Product}/>
+        <ProductInfo
+          detail={Product} />
       </Col>
     </Row>
 

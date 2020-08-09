@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productSchema = mongoose.Schema({
-
     writer: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -22,28 +21,29 @@ const productSchema = mongoose.Schema({
         type: Array,
         default: []
     },
+    continents: {
+        type: Number,
+        default: 1
+    },
     sold: {
         type: Number,
         maxlength: 100,
         default: 0
     },
-    continents: {
-        type: Number,
-        default: 1
-    },
     views: {
         type: Number,
         default: 0
     }
-}, { timestamp: true })
+}, { timestamps: true })
+
 
 productSchema.index({
     title:'text',
-    description:'text'
+    description: 'text',
 }, {
-    weights:{
-        title: 5,
-        description: 1
+    weights: {
+        name: 5,
+        description: 1,
     }
 })
 
