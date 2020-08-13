@@ -1,0 +1,31 @@
+@import '~antd/dist/antd.css';
+
+.background{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.background::after{
+  width: 100%;
+  height: 100%;
+  content: "";
+  background: url("./Images/logo.png") no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.top {
+  color: black;
+  font-weight: bold;
+  font-size: large;
+  flex-basis: 50%;
+  text-align: center;
+
+}
+

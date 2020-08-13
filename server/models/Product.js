@@ -15,7 +15,7 @@ const productSchema = mongoose.Schema({
     },
     price: {
         type: Number,
-        default: 0
+        default: 1
     },
     images: {
         type: Array,
@@ -25,13 +25,45 @@ const productSchema = mongoose.Schema({
         type: Number,
         default: 1
     },
-    sold: {
+    amount: {
         type: Number,
-        maxlength: 100,
+        //maxlength: 100,
         default: 0
     },
     views: {
         type: Number,
+        default: 0
+    },
+    calories: {
+        type: Number,
+        default: 0
+    },
+    carb: {
+        type: Number,
+        default: 0
+    },
+    fiber: {
+        type: Number,
+        default: 0
+    },
+    sugar: {
+        type: Number,
+        default: 0
+    },
+    fat: {
+        type: Number,
+        default: 0
+    },
+    protein: {
+        type: Number,
+        default: 0
+    },
+    allergy: {
+        type: String
+    },
+    sold: {
+        type:Number,
+        maxlength: 100,
         default: 0
     }
 }, { timestamps: true })

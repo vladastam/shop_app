@@ -6,8 +6,9 @@ import { Icon, Col, Card, Row, Carousel } from 'antd';
 import ImageSlider from '../../utils/ImageSlider';
 import CheckBox from './Sections/CheckBox';
 import RadioBox from './Sections/RadioBox';
+import CheckBox1 from './Sections/CheckBox1';
 import SearchFeature from './Sections/SearchFeature';
-import { continents, price } from './Sections/Data';
+import { continents, price, categories } from './Sections/Data';
 
 
 const { Meta } = Card;
@@ -22,7 +23,8 @@ function LandingPage() {
 
 	const [Filters, setFilters] = useState({
 		continents: [],
-		price: []
+		price: [],
+		categories: []
 	})
 	const [SearchTerm, setSearchTerm] = useState("")
 
@@ -143,12 +145,19 @@ function LandingPage() {
     	<div style= {{ width: '75%', margin: '3rem auto' }}>
 
     		<div style={{ textAlign: 'center' }}>
-    			<h2>Let's Travel Anyware<Icon type="rocket" /> </h2>
+    			<h2>Stay hydrate <Icon type="smile" /> </h2>
     		</div>
 
     		{/* Filter */}
 
     		<Row gutter={[16,16]}>
+					<Col lg={12} xs={24}>
+	    			{/* CheckBox */}
+					<CheckBox1
+						list={categories}
+						handleFilters={filters => handleFilters(filters, "categories")}
+					/>
+    			</Col>
     			<Col lg={12} xs={24}>
 	    			{/* CheckBox */}
 					<CheckBox
@@ -156,12 +165,13 @@ function LandingPage() {
 						handleFilters={filters => handleFilters(filters, "continents")}
 					/>
     			</Col>
-					<Col lg={12} xs={24}>
+
+					{/* <Col lg={12} xs={24}>
 							<RadioBox
 									list={price}
 									handleFilters={filters => handleFilters(filters, "price")}
 							/>
-					</Col>
+					</Col> */}
     		</Row>
 
 
@@ -181,7 +191,7 @@ function LandingPage() {
 
 				{PostSize >= Limit &&
 						<div style={{ display: 'flex', justifyContent: 'center' }}>
-								<button onClick={loadMoreHandler}>더보기</button>
+								<button onClick={loadMoreHandler}><Icon type="plus" /> </button>
 						</div>
 				}
 

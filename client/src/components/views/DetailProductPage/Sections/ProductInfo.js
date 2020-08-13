@@ -15,11 +15,22 @@ function ProductInfo(props) {
 
     return (
         <div>
-            <Descriptions title="Product Info">
-                <Descriptions.Item label="Price"> {props.detail.price}</Descriptions.Item>
-                <Descriptions.Item label="Sold">{props.detail.sold}</Descriptions.Item>
-                <Descriptions.Item label="View"> {props.detail.views}</Descriptions.Item>
-                <Descriptions.Item label="Description"> {props.detail.description}</Descriptions.Item>
+            <Descriptions title="Product Info" bordered>
+                <Descriptions.Item label="Price" span={2}> ${props.detail.price}</Descriptions.Item>
+                <Descriptions.Item label="Available Quantity" span= {2}>{props.detail.amount}</Descriptions.Item>
+                <Descriptions.Item label="Description" span={3}> {props.detail.description}</Descriptions.Item>
+                <Descriptions.Item label="Nutrition Fact and Allergy Info">
+                Calories per cake (45g): {props.detail.calories}kcal
+                <br />
+                Carbohydrate (Fiber, Sugar): {props.detail.carb}g ({props.detail.fiber}g,{props.detail.sugar}g)
+                <br />
+                Fat: {props.detail.fat}g
+                <br />
+                Protein: {props.detail.protein}g
+                <br />
+                Allergens: {props.detail.allergy}
+                <br />
+                </Descriptions.Item>
             </Descriptions>
 
             <br />

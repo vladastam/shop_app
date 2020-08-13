@@ -32,41 +32,36 @@ const price = [
     }
 ]
 
+const categories = [
+    {
+        "_id": 1,
+        "name": "Harmi Brekkie Cake"
+    },
+    {
+        "_id": 2,
+        "name": "Harmi Chickpea Spread"
+    }
 
+]
 
 const continents = [
     {
         "_id": 1,
-        "name": "Africa"
+        "name": "Black Sesame"
     },
     {
         "_id": 2,
-        "name": "Europe"
+        "name": "Injeolmi (Roasted Beans)"
     },
     {
         "_id": 3,
-        "name": "Asia"
-    },
-    {
-        "_id": 4,
-        "name": "North America"
-    },
-    {
-        "_id": 5,
-        "name": "South America"
-    },
-    {
-        "_id": 6,
-        "name": "Australia"
-    },
-    {
-        "_id": 7,
-        "name": "Antarctica"
+        "name": "Ssuk (Mugwort)"
     }
 ]
 
 
 export {
     price,
-    continents
+    continents,
+    categories
 }
