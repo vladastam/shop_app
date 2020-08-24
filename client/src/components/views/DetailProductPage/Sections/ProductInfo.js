@@ -19,6 +19,7 @@ function ProductInfo(props) {
                 <Descriptions.Item label="Price" span={2}> ${props.detail.price}</Descriptions.Item>
                 <Descriptions.Item label="Available Quantity" span= {2}>{props.detail.amount}</Descriptions.Item>
                 <Descriptions.Item label="Description" span={3}> {props.detail.description}</Descriptions.Item>
+                <Descriptions.Item label="flavor" span={3}> {props.detail.continents}</Descriptions.Item>
                 <Descriptions.Item label="Nutrition Fact and Allergy Info">
                 Calories per cake (45g): {props.detail.calories}kcal
                 <br />

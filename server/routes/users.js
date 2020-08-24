@@ -74,6 +74,7 @@ router.get("/logout", auth, (req, res) => {
 
 router.post("/addToCart", auth, (req, res) => {
     // 먼저 User Collection에 해당 유저의 정보를 가져오기
+    let today = new Date(Date.now());
 
     User.findOne({ _id: req.user._id }, (err, userInfo) => {
     // 가져온 정보에서 카트에다 넣으려 하는 상품이 이미 들어 있는지 확인
@@ -104,7 +105,7 @@ router.post("/addToCart", auth, (req, res) => {
                         cart: {
                             id: req.body.productId,
                             quantity: 1,
-                            date: Date.now()
+                            date: today.toLocaleDateString()
                         }
                     }
                 },
@@ -155,15 +156,16 @@ router.post('/successBuy', auth, (req, res) => {
     //1. User Collection 안에  History 필드 안에  간단한 결제 정보 넣어주기
     let history = [];
     let transactionData = {};
+    let today = new Date(Date.now());
 
     req.body.cartDetail.forEach((item) => {
         history.push({
-            dateOfPurchase: Date.now(),
+            dateOfPurchase: today.toLocaleDateString(),
             name: item.title,
             id: item._id,
             price: item.price,
             quantity: item.quantity,
-            paymentId: req.body.paymentData.paymentID
+            paymentId: req.body.paymentData.paymentId
         })
     })
 
@@ -209,7 +211,8 @@ router.post('/successBuy', auth, (req, res) => {
                         { _id: item.id },
                         {
                             $inc: {
-                                "amount": -item.quantity
+                                "amount": -item.quantity,
+                                "sold": item.quantity
                             }
                         },
                         { new: false },

@@ -12,6 +12,7 @@ import DetailProductPage from "./views/DetailProductPage/DetailProductPage.js";
 import CartPage from "./views/CartPage/CartPage.js";
 import IntroductionPage from "./views/IntroductionPage/IntroductionPage.js";
 import HistoryPage from './views/HistoryPage/HistoryPage';
+
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
